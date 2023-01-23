@@ -8,6 +8,7 @@ class Account
      * @var \Alpaca\Alpaca
      */
     protected $alpaca;
+    
     /**
      * Construct
      */
@@ -19,7 +20,9 @@ class Account
     /**
      * Create an account with KYC information.
      * This will create a trading account for the end user.
+     * 
      * @param JSON $params
+     * 
      * @return JSON
      */
     public function create($params)
@@ -28,7 +31,8 @@ class Account
     }
 
     /**
-     * query a list of all the accounts
+     * query a list of all the accounts.
+     * 
      * @return JSON
      */
     public function getAll()
@@ -38,7 +42,9 @@ class Account
 
     /**
      * query a specific account.
+     * 
      * @param integer $id
+     * 
      * @return JSON
      */
     public function get($id)
@@ -48,7 +54,9 @@ class Account
 
     /**
      * query a specific account.
+     * 
      * @param integer $id
+     * 
      * @return JSON
      */
     public function getTradingAccount($id)
@@ -58,8 +66,10 @@ class Account
 
     /**
      * updates account information.
+     * 
      * @param integer $id
      * @param JSON $params
+     * 
      * @return JSON
      */
     public function update($id, $params)
@@ -70,7 +80,9 @@ class Account
 
     /**
      * closes an active account.
+     * 
      * @param integer $id
+     * 
      * @return JSON
      */
     public function delete($id)
@@ -80,7 +92,9 @@ class Account
 
     /**
      * Get an SDK token to activate the Onfido SDK flow within your app.
+     * 
      * @param integer $id
+     * 
      * @return JSON
      */
     public function getOnfidoToken($id)
@@ -90,8 +104,10 @@ class Account
 
     /**
      * send Alpaca the result of the Onfido SDK flow in your app.
+     * 
      * @param integer $id
      * @param JSON $params
+     * 
      * @return JSON
      */
     public function updateOnfidoToken($id, $params)
@@ -102,8 +118,10 @@ class Account
 
     /**
      * submit the CIP results received from your KYC provider.
+     * 
      * @param integer $id
      * @param JSON $params
+     * 
      * @return JSON
      */
     public function uploadCIP($id, $params)
@@ -113,8 +131,10 @@ class Account
     }
 
     /**
-     * retrieve the CIP information
+     * retrieve the CIP information.
+     * 
      * @param integer $id
+     * 
      * @return JSON
      */
     public function getCIP($id)
@@ -124,7 +144,9 @@ class Account
 
     /**
      * retrieve account activities.
-     * @param integer $params
+     * 
+     * @param JSON $params
+     * 
      * @return JSON
      */
     public function getActivities($params)
@@ -134,7 +156,10 @@ class Account
 
     /**
      * retrieve account activities by type.
-     * @param integer $activity_type
+     * 
+     * @param string $activity_type
+     * @param JSON $params
+     * 
      * @return JSON
      */
     public function getActivitiesByType($activity_type, $params)
