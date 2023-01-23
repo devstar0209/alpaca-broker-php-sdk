@@ -56,25 +56,26 @@ class Alpaca
      */
     private $paths = [
         "accounts"     => "/accounts",
-        "account"     => "/accounts/{id}",
-        "trading_account"     => "/trading/accounts/{id}/account",
-        "onfido_token"     => "/accounts/{id}/onfido/sdk/tokens",
-        "update_onfido_token"     => "/accounts/{id}/onfido/sdk",
-        "cip"     => "/accounts/{id}/cip",
+        "account"     => "/accounts/{account_id}",
+        "trading_account"     => "/trading/accounts/{account_id}/account",
+        "onfido_token"     => "/accounts/{account_id}/onfido/sdk/tokens",
+        "update_onfido_token"     => "/accounts/{account_id}/onfido/sdk",
+        "cip"     => "/accounts/{account_id}/cip",
         "activities"     => "/accounts/activities",
         "activities_type"     => "/accounts/activities/{activity_type}",
-        "funding"  => "/fundings",
-        "trading"      => "/orders",
-        "journal"      => "/orders",
-        "documents"      => "/orders",
-        "events"      => "/orders",
-        "oauth"       => "/orders/{id}",
+        "ach_relationships"     => "/accounts/{account_id}/ach_relationships",
     ];
 
     /**
      * @var \Alpaca\Api\Account
      */
     public $account ;
+
+    /**
+     * @var \Alpaca\Api\Funding
+     */
+    public $funding ;
+    
 
     /**
      * Set Alpaca 
@@ -87,6 +88,7 @@ class Alpaca
         $this->paper = $paper;
 
         $this->account = (new Account($this));
+        $this->funding = (new Funding($this));
     }
 
     /**
