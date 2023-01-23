@@ -1,4 +1,4 @@
-<?php namespace Alpaca\Account;
+<?php namespace Alpaca\Api;
 
 use Alpaca\Alpaca;
 
@@ -120,5 +120,26 @@ class Account
     public function getCIP($id)
     {
         return $this->alpaca->request('cip', ['id' => $id])->contents();
+    }
+
+    /**
+     * retrieve account activities.
+     * @param integer $params
+     * @return JSON
+     */
+    public function getActivities($params)
+    {
+        return $this->alpaca->request('activities', $params)->contents();
+    }
+
+    /**
+     * retrieve account activities by type.
+     * @param integer $activity_type
+     * @return JSON
+     */
+    public function getActivitiesByType($activity_type, $params)
+    {
+        $params['activity_type'] = $activity_type;
+        return $this->alpaca->request('activities_type', $params)->contents();
     }
 }

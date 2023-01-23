@@ -1,7 +1,7 @@
 <?php namespace Alpaca;
 
-use Alpaca\Account\Account;
-use Alpaca\Account\Activity;
+use Alpaca\Api\Account;
+use Alpaca\Api\Funding;
 use Alpaca\Request;
 
 class Alpaca
@@ -72,15 +72,9 @@ class Alpaca
     ];
 
     /**
-     * @var \Alpaca\Account\Account
+     * @var \Alpaca\Api\Account
      */
     public $account ;
-
-    /**
-     * @var \Alpaca\Account\Activity
-     */
-    public $accountActivities ;
-    
 
     /**
      * Set Alpaca 
@@ -93,7 +87,6 @@ class Alpaca
         $this->paper = $paper;
 
         $this->account = (new Account($this));
-        $this->accountActivities = (new Activity($this));
     }
 
     /**
