@@ -205,4 +205,18 @@ class Trade
         $params['page'] = $page;
         return $this->alpaca->request('positions_all', $params)->contents();
     }
+
+    /**
+     * Getting Account Portfolio History.
+     * 
+     * @param string $account_id
+     * @param JSON $params
+     * 
+     * @return JSON
+     */
+    public function getPortfolioHistories($account_id, $params=[])
+    {
+        $params['account_id'] = $account_id;
+        return $this->alpaca->request('portfolio', $params)->contents();
+    }
 }

@@ -85,6 +85,7 @@ class Alpaca
         "positions"     => "/trading/accounts/{account_id}/positions",
         "positions_symbol"     => "/trading/accounts/{account_id}/positions/{symbol}",
         "positions_all"     => "/accounts/positions",
+        "portfolio"     => "/trading/accounts/{account_id}/account/portfolio/history",
     ];
 
     /**
