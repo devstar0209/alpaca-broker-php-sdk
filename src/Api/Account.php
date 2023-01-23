@@ -43,7 +43,7 @@ class Account
     /**
      * query a specific account.
      * 
-     * @param integer $account_id
+     * @param string $account_id
      * 
      * @return JSON
      */
@@ -55,7 +55,7 @@ class Account
     /**
      * query a specific account.
      * 
-     * @param integer $account_id
+     * @param string $account_id
      * 
      * @return JSON
      */
@@ -67,7 +67,7 @@ class Account
     /**
      * updates account information.
      * 
-     * @param integer $account_id
+     * @param string $account_id
      * @param JSON $params
      * 
      * @return JSON
@@ -81,7 +81,7 @@ class Account
     /**
      * closes an active account.
      * 
-     * @param integer $account_id
+     * @param string $account_id
      * 
      * @return JSON
      */
@@ -93,7 +93,7 @@ class Account
     /**
      * Get an SDK token to activate the Onfido SDK flow within your app.
      * 
-     * @param integer $account_id
+     * @param string $account_id
      * 
      * @return JSON
      */
@@ -105,7 +105,7 @@ class Account
     /**
      * send Alpaca the result of the Onfido SDK flow in your app.
      * 
-     * @param integer $account_id
+     * @param string $account_id
      * @param JSON $params
      * 
      * @return JSON
@@ -119,7 +119,7 @@ class Account
     /**
      * submit the CIP results received from your KYC provider.
      * 
-     * @param integer $account_id
+     * @param string $account_id
      * @param JSON $params
      * 
      * @return JSON
@@ -133,7 +133,7 @@ class Account
     /**
      * retrieve the CIP information.
      * 
-     * @param integer $account_id
+     * @param string $account_id
      * 
      * @return JSON
      */
