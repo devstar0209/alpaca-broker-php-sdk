@@ -64,6 +64,14 @@ class Alpaca
         "activities"     => "/accounts/activities",
         "activities_type"     => "/accounts/activities/{activity_type}",
         "ach_relationships"     => "/accounts/{account_id}/ach_relationships",
+        "ach_relationships_delete"     => "/accounts/{account_id}/ach_relationships/{relationship_id}",
+        "recipient_banks"     => "/accounts/{account_id}/recipient_banks",
+        "recipient_banks_delete"     => "/accounts/{account_id}/recipient_banks/{bank_id}",
+        "jit_limits"     => "/transfers/jit/limits",
+        "jit_ledgers"     => "/transfers/jit/ledgers",
+        "jit_balances"     => "/transfers/jit/{ledger_id}/balances",
+        "transfers"     => "/accounts/{account_id}/transfers",
+        "transfers_delete"     => "/accounts/{account_id}/transfers/{transfer_id}",
     ];
 
     /**
