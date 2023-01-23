@@ -33,11 +33,13 @@ class Account
     /**
      * query a list of all the accounts.
      * 
+     * @param JSON $params
+     * 
      * @return JSON
      */
-    public function getAll()
+    public function getAll($params=[])
     {
-        return $this->alpaca->request('accounts')->contents();
+        return $this->alpaca->request('accounts', $params)->contents();
     }
 
     /**
@@ -72,7 +74,7 @@ class Account
      * 
      * @return JSON
      */
-    public function update($account_id, $params)
+    public function update($account_id, $params=[])
     {
         $params['account_id'] = $account_id;
         return $this->alpaca->request('account', $params, "PATCH")->contents();
@@ -94,12 +96,14 @@ class Account
      * Get an SDK token to activate the Onfido SDK flow within your app.
      * 
      * @param string $account_id
+     * @param JSON $params
      * 
      * @return JSON
      */
-    public function getOnfidoToken($account_id)
+    public function getOnfidoToken($account_id, $params=[])
     {
-        return $this->alpaca->request('onfido_token', ['account_id' => $account_id])->contents();
+        $params['account_id'] = $account_id;
+        return $this->alpaca->request('onfido_token', $params)->contents();
     }
 
     /**
