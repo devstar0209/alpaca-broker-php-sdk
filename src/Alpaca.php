@@ -1,8 +1,9 @@
 <?php namespace Alpaca;
 
 use Alpaca\Api\Account;
-use Alpaca\Api\Funding;
 use Alpaca\Api\Document;
+use Alpaca\Api\Funding;
+use Alpaca\Api\Trade;
 use Alpaca\Request;
 
 class Alpaca
@@ -77,22 +78,31 @@ class Alpaca
         "documents_id"     => "/accounts/{account_id}/documents/{document_id}",
         "document_upload"     => "/accounts/{account_id}/documents/upload",
         "document_download"     => "/accounts/{account_id}/documents/{document_id}/download",
+        "orders"     => "/trading/accounts/{account_id}/orders",
+        "orders_esti"     => "/trading/accounts/{account_id}/orders/estimation",
+        "orders_id"     => "/trading/accounts/{account_id}/orders/{order_id}",
+        "orders_client"     => "/trading/accounts/{account_id}/orders:by_client_order_id",
     ];
 
     /**
      * @var \Alpaca\Api\Account
      */
-    public $account ;
+    public $account;
 
     /**
      * @var \Alpaca\Api\Funding
      */
-    public $funding ;
+    public $funding;
 
     /**
      * @var \Alpaca\Api\Document
      */
-    public $document ;
+    public $document;
+
+    /**
+     * @var \Alpaca\Api\Trade
+     */
+    public $trade;
     
 
     /**
@@ -108,6 +118,7 @@ class Alpaca
         $this->account = (new Account($this));
         $this->funding = (new Funding($this));
         $this->document = (new Document($this));
+        $this->trade = (new Trade($this));
     }
 
     /**
