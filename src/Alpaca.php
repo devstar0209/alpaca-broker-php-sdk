@@ -82,6 +82,9 @@ class Alpaca
         "orders_esti"     => "/trading/accounts/{account_id}/orders/estimation",
         "orders_id"     => "/trading/accounts/{account_id}/orders/{order_id}",
         "orders_client"     => "/trading/accounts/{account_id}/orders:by_client_order_id",
+        "positions"     => "/trading/accounts/{account_id}/positions",
+        "positions_symbol"     => "/trading/accounts/{account_id}/positions/{symbol}",
+        "positions_all"     => "/accounts/positions",
     ];
 
     /**

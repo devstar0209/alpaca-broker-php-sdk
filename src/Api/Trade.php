@@ -133,4 +133,76 @@ class Trade
         $params['order_id'] = $order_id;
         return $this->alpaca->request('orders_id', $params, 'DELETE')->contents();
     }
+
+    /**
+     * Getting All Positions.
+     * 
+     * @param string $account_id
+     * 
+     * @return JSON
+     */
+    public function getAllPositions($account_id)
+    {
+        $params['account_id'] = $account_id;
+        return $this->alpaca->request('positions', $params)->contents();
+    }
+
+    /**
+     * Getting an Open Position.
+     * 
+     * @param string $account_id
+     * @param string $symbol
+     * 
+     * @return JSON
+     */
+    public function getOpenPosition($account_id, $symbol)
+    {
+        $params['account_id'] = $account_id;
+        $params['symbol'] = $symbol;
+        return $this->alpaca->request('positions_symbol', $params)->contents();
+    }
+
+    /**
+     * Close All Positions.
+     * 
+     * @param string $account_id
+     * @param boolean $cancel
+     * 
+     * @return JSON
+     */
+    public function closeAllPositions($account_id, $cancel=true)
+    {
+        $params['account_id'] = $account_id;
+        $params['cancel_orders'] = $cancel;
+        return $this->alpaca->request('positions', $params, 'DELETE')->contents();
+    }
+
+    /**
+     * Close a Position.
+     * 
+     * @param string $account_id
+     * @param string $symbol
+     * @param JSON $params
+     * 
+     * @return JSON
+     */
+    public function closePosition($account_id, $symbol, $params=[])
+    {
+        $params['account_id'] = $account_id;
+        $params['symbol'] = $symbol;
+        return $this->alpaca->request('positions_symbol', $params, 'DELETE')->contents();
+    }
+
+    /**
+     * Bulk fetching all accounts positions.
+     * 
+     * @param integer $page
+     * 
+     * @return JSON
+     */
+    public function getAllAccountsPositions($page)
+    {
+        $params['page'] = $page;
+        return $this->alpaca->request('positions_all', $params)->contents();
+    }
 }
