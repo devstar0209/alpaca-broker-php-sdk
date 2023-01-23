@@ -2,6 +2,7 @@
 
 use Alpaca\Api\Account;
 use Alpaca\Api\Funding;
+use Alpaca\Api\Document;
 use Alpaca\Request;
 
 class Alpaca
@@ -72,6 +73,10 @@ class Alpaca
         "jit_balances"     => "/transfers/jit/{ledger_id}/balances",
         "transfers"     => "/accounts/{account_id}/transfers",
         "transfers_delete"     => "/accounts/{account_id}/transfers/{transfer_id}",
+        "documents"     => "/accounts/{account_id}/documents",
+        "documents_id"     => "/accounts/{account_id}/documents/{document_id}",
+        "document_upload"     => "/accounts/{account_id}/documents/upload",
+        "document_download"     => "/accounts/{account_id}/documents/{document_id}/download",
     ];
 
     /**
@@ -83,6 +88,11 @@ class Alpaca
      * @var \Alpaca\Api\Funding
      */
     public $funding ;
+
+    /**
+     * @var \Alpaca\Api\Document
+     */
+    public $document ;
     
 
     /**
@@ -97,6 +107,7 @@ class Alpaca
 
         $this->account = (new Account($this));
         $this->funding = (new Funding($this));
+        $this->document = (new Document($this));
     }
 
     /**
