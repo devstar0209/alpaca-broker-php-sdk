@@ -219,4 +219,112 @@ class Trade
         $params['account_id'] = $account_id;
         return $this->alpaca->request('portfolio', $params)->contents();
     }
+
+    /**
+     * Creating an Watchlist.
+     * 
+     * @param string $account_id
+     * @param JSON $params
+     * 
+     * @return JSON
+     */
+    public function createWatchlist($account_id, $params)
+    {
+        $params['account_id'] = $account_id;
+        return $this->alpaca->request('watchlists', $params, "POST")->contents();
+    }
+
+    /**
+     * Getting a Watchlist by Watchlist ID.
+     * 
+     * @param string $account_id
+     * @param string $watchlist_id
+     * 
+     * @return JSON
+     */
+    public function getWatchlist($account_id, $watchlist_id)
+    {
+        $params['account_id'] = $account_id;
+        $params['watchlist_id'] = $watchlist_id;
+        return $this->alpaca->request('watchlists_id', $params)->contents();
+    }
+
+    /**
+     * Updating a Watchlist.
+     * 
+     * @param string $account_id
+     * @param string $watchlist_id
+     * @param JSON $params
+     * 
+     * @return JSON
+     */
+    public function updateWatchlist($account_id, $watchlist_id, $params)
+    {
+        $params['account_id'] = $account_id;
+        $params['watchlist_id'] = $watchlist_id;
+        return $this->alpaca->request('watchlists_id', $params, 'PUT')->contents();
+    }
+
+    /**
+     * Adding an Asset to a Watchlist.
+     * 
+     * @param string $account_id
+     * @param string $watchlist_id
+     * @param array $assets
+     * 
+     * @return JSON
+     */
+    public function addAssetsToWatchlist($account_id, $watchlist_id, $assets=[])
+    {
+        $params['account_id'] = $account_id;
+        $params['watchlist_id'] = $watchlist_id;
+        $params['symbol'] = $assets;
+        return $this->alpaca->request('watchlists_id', $params, 'PUT')->contents();
+    }
+
+    /**
+     * Removing a Symbol from a Watchlist.
+     * 
+     * @param string $account_id
+     * @param string $watchlist_id
+     * @param string $symbol
+     * 
+     * @return JSON
+     */
+    public function removeSymbolFromWatchlist($account_id, $watchlist_id, $symbol)
+    {
+        $params['account_id'] = $account_id;
+        $params['watchlist_id'] = $watchlist_id;
+        $params['symbol'] = $symbol;
+        return $this->alpaca->request('watchlists_symbol', $params, 'DELETE')->contents();
+    }
+
+    /**
+     * Delete a Watchlist.
+     * 
+     * @param string $account_id
+     * @param string $watchlist_id
+     * 
+     * @return JSON
+     */
+    public function deleteWatchlist($account_id, $watchlist_id)
+    {
+        $params['account_id'] = $account_id;
+        $params['watchlist_id'] = $watchlist_id;
+        return $this->alpaca->request('watchlists_id', $params, 'DELETE')->contents();
+    }
+
+    /**
+     * Setting Margin Multiplier
+     * 
+     * @param string $account_id
+     * @param JSON $params
+     * 
+     * @return JSON
+     */
+    public function setMargin($account_id, $params)
+    {
+        $params['account_id'] = $account_id;
+        return $this->alpaca->request('set_margin', $params, 'PATCH')->contents();
+    }
 }

@@ -86,6 +86,10 @@ class Alpaca
         "positions_symbol"     => "/trading/accounts/{account_id}/positions/{symbol}",
         "positions_all"     => "/accounts/positions",
         "portfolio"     => "/trading/accounts/{account_id}/account/portfolio/history",
+        "watchlists"     => "/trading/accounts/{account_id}/watchlists",
+        "watchlists_id"     => "/trading/accounts/{account_id}/watchlists/{watchlist_id}",
+        "watchlists_symbol"     => "/trading/accounts/{account_id}/watchlists/{watchlist_id}/{symbol}",
+        "set_margin"     => "/trading/accounts/{account_id}/account/configurations",
     ];
 
     /**
