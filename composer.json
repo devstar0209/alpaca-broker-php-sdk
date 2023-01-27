@@ -10,7 +10,7 @@
             "email": "loganph.work@gmail.com"
         }
     ],
-
+	"minimum-stability": "beta",
 	"require": {
         "php": "^8.0.2",
         "guzzlehttp/guzzle": "^7.2"
