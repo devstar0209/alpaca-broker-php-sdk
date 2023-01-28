@@ -161,10 +161,10 @@ class Alpaca
     public function getRoot()
     {
         if ($this->paper===true) {
-            return $this->apiPaperPath.$this->version;
+            return $this->apiPaperPath;
         }
 
-        return $this->apiPath.$this->version;
+        return $this->apiPath;
     }
 
     /**
@@ -174,7 +174,7 @@ class Alpaca
      */
     public function getPath($handle)
     {
-        return $this->paths[$handle] ?? false;
+        return isset($this->paths[$handle]) ? $this->version.$this->paths[$handle] : false;
     }
     
     /**
