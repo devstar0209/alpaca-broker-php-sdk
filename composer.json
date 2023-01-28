@@ -1,7 +1,7 @@
 {
 	"description": "PHP SDK for the Alpaca Broker API",
 	"keywords": ["alpaca", "stock brocker","stocks", "broker api", "broker", "API", "broker API"],
-	"name": "gitdevstar/alpaca-broker-php-sdk",
+	"name": "devstar/alpaca-broker-php-sdk",
 	"homepage": "https://github.com/gitdevstar/alpaca-broker-php-sdk",
 	"type": "package",
 	"authors": [
