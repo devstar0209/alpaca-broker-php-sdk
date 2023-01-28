@@ -79,7 +79,9 @@ class Request
         $url = $this->alpaca->getPath($handle);
 
         foreach($segments as $segment=>$value) {
-            $url = str_replace('{'.$segment.'}', $value, $url);
+            if (gettype($value) == 'string') {
+                $url = str_replace('{'.$segment.'}', $value, $url);
+            }
         }
 
         return $url;
