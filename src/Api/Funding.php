@@ -20,12 +20,14 @@ class Funding
     /**
      * Creating an ACH Relationship.
      * 
+     * @param string $account_id
      * @param JSON $params
      * 
      * @return JSON
      */
-    public function createAchRelationship($params)
+    public function createAchRelationship($account_id, $params)
     {
+        $params['account_id'] = $account_id;
         return $this->alpaca->request('ach_relationships', $params, "POST")->contents();
     }
 
