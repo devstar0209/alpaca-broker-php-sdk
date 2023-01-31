@@ -1,6 +1,7 @@
 <?php namespace Alpaca;
 
 use Alpaca\Api\Account;
+use Alpaca\Api\Asset;
 use Alpaca\Api\Document;
 use Alpaca\Api\Funding;
 use Alpaca\Api\Trade;
@@ -90,6 +91,9 @@ class Alpaca
         "watchlists_id"     => "/trading/accounts/{account_id}/watchlists/{watchlist_id}",
         "watchlists_symbol"     => "/trading/accounts/{account_id}/watchlists/{watchlist_id}/{symbol}",
         "set_margin"     => "/trading/accounts/{account_id}/account/configurations",
+        "assets" => "/assets",
+        "assets_symbol" => "/assets/:symbol",
+        "assets_id" => "/assets/:id",
     ];
 
     /**
@@ -111,6 +115,11 @@ class Alpaca
      * @var \Alpaca\Api\Trade
      */
     public $trade;
+
+    /**
+     * @var \Alpaca\Api\Asset
+     */
+    public $asset;
     
 
     /**
@@ -127,6 +136,7 @@ class Alpaca
         $this->funding = (new Funding($this));
         $this->document = (new Document($this));
         $this->trade = (new Trade($this));
+        $this->asset = (new Asset($this));
     }
 
     /**

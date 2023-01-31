@@ -81,6 +81,7 @@ class Request
         foreach($segments as $segment=>$value) {
             if (gettype($value) == 'string') {
                 $url = str_replace('{'.$segment.'}', $value, $url);
+                $url = str_replace(':'.$segment, $value, $url);
             }
         }
 
