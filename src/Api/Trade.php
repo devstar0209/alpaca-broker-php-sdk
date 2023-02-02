@@ -241,7 +241,7 @@ class Trade
      * 
      * @return array
      */
-    public function getWatchlist($account_id)
+    public function getWatchlists($account_id)
     {
         $params['account_id'] = $account_id;
         return $this->alpaca->request('watchlists', $params)->contents();
