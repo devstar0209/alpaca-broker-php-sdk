@@ -70,11 +70,13 @@ class Request
          catch (ClientException  $e) {
             $response = $e->getResponse();
             $responseBodyAsString = $response->getBody()->getContents();
-            throw new Exception($responseBodyAsString);
+            $erroObj = json_decode($responseBodyAsString);
+            throw new Exception($erroObj->message);
         } catch (RequestException $e) {
             $response = $e->getResponse();
             $responseBodyAsString = $response->getBody()->getContents();
-            throw new Exception($responseBodyAsString);
+            $erroObj = json_decode($responseBodyAsString);
+            throw new Exception($erroObj->message);
         }
 
         // send and return the request response
