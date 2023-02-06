@@ -51,7 +51,7 @@ class Trade
      * @param string $account_id
      * @param JSON $params
      * 
-     * @return JSON
+     * @return array
      */
     public function getAllOrders($account_id, $params)
     {
@@ -139,7 +139,7 @@ class Trade
      * 
      * @param string $account_id
      * 
-     * @return JSON
+     * @return array
      */
     public function getAllPositions($account_id)
     {
@@ -198,7 +198,7 @@ class Trade
      * 
      * @param integer $page
      * 
-     * @return JSON
+     * @return array
      */
     public function getAllAccountsPositions($page)
     {
@@ -212,7 +212,7 @@ class Trade
      * @param string $account_id
      * @param JSON $params
      * 
-     * @return JSON
+     * @return array
      */
     public function getPortfolioHistories($account_id, $params=[])
     {

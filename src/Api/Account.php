@@ -35,7 +35,7 @@ class Account
      * 
      * @param JSON $params
      * 
-     * @return JSON
+     * @return array
      */
     public function getAll($params=[])
     {
@@ -151,7 +151,7 @@ class Account
      * 
      * @param JSON $params
      * 
-     * @return JSON
+     * @return array
      */
     public function getActivities($params)
     {

@@ -37,7 +37,7 @@ class Funding
      * @param string $account_id
      * @param JSON $params
      * 
-     * @return JSON
+     * @return array
      */
     public function getAchRelationships($account_id, $params=[])
     {
@@ -79,7 +79,7 @@ class Funding
      * 
      * @param string $account_id
      * 
-     * @return JSON
+     * @return array
      */
     public function getBankRelationships($account_id)
     {
@@ -105,7 +105,7 @@ class Funding
     /**
      * Retrieving Daily Trading Limits.
      * 
-     * @return JSON
+     * @return array
      */
     public function getDailyTradingLimits()
     {
@@ -115,7 +115,7 @@ class Funding
     /**
      * Retrieving JIT Ledgers.
      * 
-     * @return JSON
+     * @return array
      */
     public function getJitLedgers()
     {
@@ -128,7 +128,7 @@ class Funding
      * @param string $ledger_id
      * @param JSON $params
      * 
-     * @return JSON
+     * @return array
      */
     public function getJitLedgerBalances($ledger_id, $params)
     {
@@ -156,7 +156,7 @@ class Funding
      * @param string $account_id
      * @param JSON $params
      * 
-     * @return JSON
+     * @return array
      */
     public function getAllTransfersByAccount($account_id, $params=[])
     {
