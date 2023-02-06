@@ -2,6 +2,7 @@
 
 use GuzzleHttp\Client;
 use Alpaca\Response;
+use Exception;
 
 class Request
 {
@@ -62,6 +63,11 @@ class Request
                 $seconds = $stats->getTransferTime(); 
              }
         ]);
+
+        $res = $request->getBody()->getContents();
+        if($res['error'] != null && $res['error'] != '')
+            throw new Exception($res['response']['message']);
+
 
         // send and return the request response
         return (new Response($request, $seconds));
