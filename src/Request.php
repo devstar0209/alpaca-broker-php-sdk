@@ -3,6 +3,8 @@
 use GuzzleHttp\Client;
 use Alpaca\Response;
 use Exception;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\RequestException;
 
 class Request
 {
@@ -51,23 +53,29 @@ class Request
 
         $auth = base64_encode($this->alpaca->getAuthKeys()[0].':'.$this->alpaca->getAuthKeys()[1]);
 
-        // push request
-        $request = $this->client->request($type, $url, [
-            'json' => $params,
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Accept' => 'application/json',
-                'Authorization' => 'Basic '.$auth,
-            ],
-            'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$seconds) {
-                $seconds = $stats->getTransferTime(); 
-             }
-        ]);
-
-        $res = $request->getBody()->getContents();
-        if($res['error'] != null && $res['error'] != '')
-            throw new Exception($res['response']['message']);
-
+        try {
+            // push request
+            $request = $this->client->request($type, $url, [
+                'json' => $params,
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Basic '.$auth,
+                ],
+                'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$seconds) {
+                    $seconds = $stats->getTransferTime(); 
+                 }
+            ]);
+        }
+         catch (ClientException  $e) {
+            $response = $e->getResponse();
+            $responseBodyAsString = $response->getBody()->getContents();
+            throw new Exception($responseBodyAsString);
+        } catch (RequestException $e) {
+            $response = $e->getResponse();
+            $responseBodyAsString = $response->getBody()->getContents();
+            throw new Exception($responseBodyAsString);
+        }
 
         // send and return the request response
         return (new Response($request, $seconds));
