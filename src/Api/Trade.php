@@ -287,11 +287,11 @@ class Trade
      * 
      * @return JSON
      */
-    public function addAssetsToWatchlist($account_id, $watchlist_id, $assets=[])
+    public function addAssetsToWatchlist($account_id, $watchlist_id, $assets)
     {
         $params['account_id'] = $account_id;
         $params['watchlist_id'] = $watchlist_id;
-        $params['symbol'] = json_encode($assets);
+        $params['symbol'] = $assets;
         return $this->alpaca->request('watchlists_id', $params, 'POST')->contents();
     }
 
