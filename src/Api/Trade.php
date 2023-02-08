@@ -292,7 +292,7 @@ class Trade
         $params['account_id'] = $account_id;
         $params['watchlist_id'] = $watchlist_id;
         $params['symbol'] = $assets;
-        return $this->alpaca->request('watchlists_id', $params, 'PUT')->contents();
+        return $this->alpaca->request('watchlists_id', $params, 'POST')->contents();
     }
 
     /**
