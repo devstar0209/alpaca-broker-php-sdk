@@ -283,7 +283,7 @@ class Trade
      * 
      * @param string $account_id
      * @param string $watchlist_id
-     * @param array $assets
+     * @param string $assets
      * 
      * @return JSON
      */
