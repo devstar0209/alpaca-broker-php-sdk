@@ -291,7 +291,7 @@ class Trade
     {
         $params['account_id'] = $account_id;
         $params['watchlist_id'] = $watchlist_id;
-        $params['symbol'] = $assets;
+        $params['symbol'] = json_encode($assets);
         return $this->alpaca->request('watchlists_id', $params, 'POST')->contents();
     }
 
