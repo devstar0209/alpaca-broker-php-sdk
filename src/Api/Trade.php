@@ -253,7 +253,7 @@ class Trade
      * @param string $account_id
      * @param string $watchlist_id
      * 
-     * @return array
+     * @return JSON
      */
     public function getWatchlistById($account_id, $watchlist_id)
     {
