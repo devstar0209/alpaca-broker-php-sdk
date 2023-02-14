@@ -49,11 +49,11 @@ class Trade
      * Getting All Orders.
      * 
      * @param string $account_id
-     * @param JSON $params
+     * @param JSON|null $params
      * 
      * @return array
      */
-    public function getAllOrders($account_id, $params)
+    public function getAllOrders($account_id, $params=null)
     {
         $params['account_id'] = $account_id;
         return $this->alpaca->request('orders', $params)->contents();
