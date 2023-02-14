@@ -55,17 +55,19 @@ class Request
 
         try {
             // push request
-            $request = $this->client->request($type, $url, [
-                'json' => $params,
+            $options = [
                 'headers' => [
-                    'Content-Type' => 'application/json',
-                    'Accept' => 'application/json',
+                    'Content-Type' => '*/*',
+                    'Accept' => '*/*',
                     'Authorization' => 'Basic '.$auth,
                 ],
                 'on_stats' => function (\GuzzleHttp\TransferStats $stats) use (&$seconds) {
                     $seconds = $stats->getTransferTime(); 
                  }
-            ]);
+            ];
+            if($type == 'GET') $options['query'] = $params;
+            else $options['json'] = $params;
+            $request = $this->client->request($type, $url, $options);
         }
          catch (ClientException  $e) {
             $response = $e->getResponse();
