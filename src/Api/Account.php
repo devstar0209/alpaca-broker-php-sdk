@@ -164,7 +164,7 @@ class Account
      * @param string $activity_type
      * @param JSON $params
      * 
-     * @return JSON
+     * @return array
      */
     public function getActivitiesByType($activity_type, $params)
     {
