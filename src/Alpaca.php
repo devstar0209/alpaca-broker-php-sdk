@@ -3,6 +3,7 @@
 use Alpaca\Api\Account;
 use Alpaca\Api\Asset;
 use Alpaca\Api\Document;
+use Alpaca\Api\Events;
 use Alpaca\Api\Funding;
 use Alpaca\Api\Trade;
 use Alpaca\Request;
@@ -94,6 +95,11 @@ class Alpaca
         "assets" => "/assets",
         "assets_symbol" => "/assets/:symbol",
         "assets_id" => "/assets/:id",
+        "events_accounts" => "/events/accounts/status",
+        "events_trades" => "/events/trades",
+        "events_transfers" => "/events/transfers/status",
+        "events_journal" => "/events/journals/status",
+        "events_nta" => "/events/nta",
     ];
 
     /**
@@ -120,6 +126,11 @@ class Alpaca
      * @var \Alpaca\Api\Asset
      */
     public $asset;
+
+    /**
+     * @var \Alpaca\Api\Events
+     */
+    public $events;
     
 
     /**
@@ -137,6 +148,7 @@ class Alpaca
         $this->document = (new Document($this));
         $this->trade = (new Trade($this));
         $this->asset = (new Asset($this));
+        $this->events = (new Events($this));
     }
 
     /**
