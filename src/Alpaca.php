@@ -212,7 +212,7 @@ class Alpaca
     /**
      * stream()
      *
-     * @return \Alpaca\Response
+     * @return mix
      */
     public function stream($handle, $params = [])
     {

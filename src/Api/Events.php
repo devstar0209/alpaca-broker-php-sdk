@@ -26,7 +26,7 @@ class Events
      */
     public function getAccountsStatus($params=[])
     {
-        return $this->alpaca->stream('events_accounts', $params)->contents();
+        return $this->alpaca->stream('events_accounts', $params);
     }
 
     /**
@@ -38,7 +38,7 @@ class Events
      */
     public function getTradesStatus($params=[])
     {
-        return $this->alpaca->stream('events_trades', $params)->contents();
+        return $this->alpaca->stream('events_trades', $params);
     }
 
     /**
@@ -50,7 +50,7 @@ class Events
      */
     public function getTransfersStatus($params=[])
     {
-        return $this->alpaca->stream('events_transfers', $params)->contents();
+        return $this->alpaca->stream('events_transfers', $params);
     }
 
     /**
@@ -62,7 +62,7 @@ class Events
      */
     public function getJournalStatus($params=[])
     {
-        return $this->alpaca->stream('events_journal', $params)->contents();
+        return $this->alpaca->stream('events_journal', $params);
     }
 
     /**
@@ -74,7 +74,7 @@ class Events
      */
     public function getNtaStatus($params=[])
     {
-        return $this->alpaca->stream('events_nta', $params)->contents();
+        return $this->alpaca->stream('events_nta', $params);
     }
 
 }
