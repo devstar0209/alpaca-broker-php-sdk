@@ -65,8 +65,13 @@ class Request
                     $seconds = $stats->getTransferTime(); 
                  }
             ];
-            if($type == 'GET') $options['query'] = $params;
+            if($type == 'GET' || $type == 'STREAM') $options['query'] = $params;
             else $options['json'] = $params;
+            if($type == 'STREAM') {
+                $context = stream_context_create($options);
+                $fp = fopen($url, 'r', false, $context);
+                return $fp;
+            }
             $request = $this->client->request($type, $url, $options);
         }
          catch (ClientException  $e) {
