@@ -65,13 +65,9 @@ class Request
                     $seconds = $stats->getTransferTime(); 
                  }
             ];
-            if($type == 'GET' || $type == 'STREAM') $options['query'] = $params;
+            if($type == 'GET') $options['query'] = $params;
             else $options['json'] = $params;
-            if($type == 'STREAM') {
-                $context = stream_context_create($options);
-                $fp = fopen($url, 'r', false, $context);
-                return $fp;
-            }
+            
             $request = $this->client->request($type, $url, $options);
         }
          catch (ClientException  $e) {
@@ -88,6 +84,59 @@ class Request
 
         // send and return the request response
         return (new Response($request, $seconds));
+    }
+
+    /**
+     * stream()
+     *
+     * Send request
+     *
+     * @return array
+     */
+    public function stream($handle, $params = [])
+    {
+        // build and prepare our full path rul
+        $url = $this->prepareUrl($handle, $params);
+
+        // lets track how long it takes for this request
+        $seconds = 0;
+
+        $auth = base64_encode($this->alpaca->getAuthKeys()[0].':'.$this->alpaca->getAuthKeys()[1]);
+
+        try {
+            // push request
+            $options = [
+                'http' => [
+                    'method'=>"GET",
+                    'jquery' => $params,
+                    'header' => [
+                        'Content-Type' => '*/*',
+                        'Accept' => '*/*',
+                        'Authorization' => 'Basic '.$auth,
+                    ],
+                ]
+            ];
+            
+            $context = stream_context_create($options);
+
+            /* Sends an http request to www.example.com
+            with additional headers shown above */
+            $fp = fopen($url, 'r', false, $context);
+        }
+         catch (ClientException  $e) {
+            $response = $e->getResponse();
+            $responseBodyAsString = $response->getBody()->getContents();
+            $erroObj = json_decode($responseBodyAsString);
+            throw new Exception($erroObj->message);
+        } catch (RequestException $e) {
+            $response = $e->getResponse();
+            $responseBodyAsString = $response->getBody()->getContents();
+            $erroObj = json_decode($responseBodyAsString);
+            throw new Exception($erroObj->message);
+        }
+
+        // send and return the request response
+        return $fp;
     }
 
     /**
