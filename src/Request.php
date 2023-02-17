@@ -121,7 +121,7 @@ class Request
 
             /* Sends an http request to www.example.com
             with additional headers shown above */
-            $fp = fopen($url, 'r', false, $context);
+            $fp = fopen($this->alpaca->getRoot().$url, 'r', false, $context);
         }
          catch (ClientException  $e) {
             $response = $e->getResponse();
