@@ -110,8 +110,6 @@ class Request
                     'method'=>"GET",
                     'jquery' => $params,
                     'header' => [
-                        'Content-Type' => '*/*',
-                        'Accept' => '*/*',
                         'Authorization' => 'Basic '.$auth,
                     ],
                 ]
