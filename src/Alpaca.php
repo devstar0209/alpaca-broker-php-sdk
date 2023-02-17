@@ -210,6 +210,16 @@ class Alpaca
     }
 
     /**
+     * stream()
+     *
+     * @return \Alpaca\Response
+     */
+    public function stream($handle, $params = [])
+    {
+        return (new Request($this))->stream($handle, $params);
+    }
+
+    /**
      * account()
      *
      * @return \Alpaca\Account\Account
